@@ -1,10 +1,37 @@
-~ $ git clone https://github.com/username/username.github.io
-~ $ cd username.github.io
+<html>
+  <head>
+    <title>Roller</title>
+    <style type='text/css'>
+      .roller {
+        margin: 0 auto;
+        padding-top: 20px;
+        width: 640px;
+        max-width: 100%;
+        text-align: center;
+        font-size: 40px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+      <div class='roller'>
+        <span id='reloadText'>Reload Me!</span>
+        <iframe id='rollVid' style='display: none' src="" width="640" height="480" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+      </div>
+      </iframe>
+    <script type='text/javascript'>
+      function rickRoll() {
+        document.getElementById('rollVid').setAttribute('allow', 'autoplay; fullscreen');
+        document.getElementById('rollVid').setAttribute('src', 'https://player.vimeo.com/video/148751763?autoplay=1&color=ffffff&title=0&byline=0&portrait=0');
+        document.getElementById('rollVid').style.display = 'block';
+        document.getElementById('reloadText').style.display = 'none';
+      }
 
-~ $ echo "Hello World" > index.html
-
-~ $ git add --all
-
-~ $ git commit -m "Initial commit"
-
-~ $ git push -u origin main
+      let counter = localStorage.getItem('counter') || 0;
+      if (++counter % 2 == 0) {
+        rickRoll();
+      }
+      localStorage.setItem('counter', counter);
+    </script>
+  </body>
+</html>
